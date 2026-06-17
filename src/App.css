@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  cursor: url('/images/Star.png') 20 20, auto;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+li {
+  list-style: none;
+  color: #fff;
+}
+
+a,
+adress,
+em {
+  text-decoration: none;
+  color: #fff;
+}
+
+.scroll-top {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.scroll-top:hover {
+  background: rgba(255, 213, 86, 0.2);
+  border-color: rgba(255, 213, 86, 0.6);
+  color: #ffd250;
+}

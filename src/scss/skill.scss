@@ -1,0 +1,151 @@
+.skills {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 80px;
+
+    h2 {
+        font-size: 40px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+
+        span {
+            display: block;
+            font-size: 20px;
+            font-weight: 300;
+            color: #aaa;
+            margin-top: 4px;
+        }
+    }
+
+    .skill-wrap {
+        display: grid;
+        grid-template-columns: 4fr 6fr;
+        gap: 80px;
+        margin-top: 60px;
+
+        .label {
+            font-size: 15px;
+            font-weight: 200;
+            color: #aaa;
+            margin-bottom: 32px;
+            letter-spacing: 2px;
+        }
+
+        // 좌측 그래프
+        .stack {
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 33px;
+
+                li {
+                    display: grid;
+                    grid-template-columns: 140px 1fr 40px;
+                    align-items: center;
+                    gap: 12px;
+
+                    .tech-name {
+                        font-size: 17px;
+                        font-weight: 400;
+                        color: #ccc;
+                    }
+
+                    .bar-track {
+                        height: 7px;
+                        background: rgba(255, 255, 255, 0.1);
+                        border-radius: 2px;
+                        overflow: hidden;
+
+                        .bar-fill {
+                            height: 100%;
+                            width: 0;
+                            background: #ffd250;
+                            border-radius: 5px;
+                            transition: width 1s ease;
+                        }
+                    }
+
+                    .percent {
+                        font-size: 15px;
+                        color: #666;
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+        // 우측 설명
+        .performance {
+            margin-left: 150px;
+
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                margin-top: -13px;
+
+                li {
+                    opacity: 0;
+                    transform: translateY(16px);
+                    transition: opacity 0.6s ease, transform 0.6s ease;
+
+                    &:nth-child(1) {
+                        transition-delay: 0s;
+                    }
+
+                    &:nth-child(2) {
+                        transition-delay: 0.2s;
+                    }
+
+                    &:nth-child(3) {
+                        transition-delay: 0.4s;
+                    }
+
+                    &.visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+
+                    .num {
+                        font-size: 15px;
+                        color: #ffd250;
+                        font-weight: 600;
+                        letter-spacing: 2px;
+                    }
+
+                    h3 {
+                        font-size: 23px;
+                        font-weight: 700;
+                        margin: 6px 0 8px;
+                        letter-spacing: 1px;
+                    }
+
+                    .tags {
+                        font-size: 16px;
+                        font-weight: 300;
+                        color: #ccc;
+                        margin-bottom: 20px;
+                    }
+
+                    .desc {
+                        font-size: 17px;
+                        font-weight: 300;
+                        color: #888;
+                        line-height: 1.8;
+                    }
+                }
+            }
+        }
+    }
+}

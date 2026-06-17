@@ -1,0 +1,256 @@
+.About {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: visible;
+
+    h2 {
+        position: absolute;
+        top: 40px;
+        left: 80px;
+        font-size: 40px;
+        font-weight: 800;
+        text-transform: uppercase;
+        z-index: 10;
+
+        span {
+            display: block;
+            font-size: 20px;
+            font-weight: 300;
+            margin-top: 4px;
+            color: #aaa;
+        }
+    }
+
+    // 화살표 버튼
+    .arrow-btn {
+        position: absolute;
+        top: 40px;
+        right: 80px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        transition: background 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+    }
+
+    .left {
+        position: relative;
+        height: 100vh;
+        overflow: visible;
+
+        img {
+            width: 70%;
+            height: 70%;
+            object-fit: cover;
+            object-position: top center;
+            padding-top: 150px;
+            margin-left: 50px;
+        }
+    }
+
+    // 우측 콘텐츠 영역
+    .right {
+        position: relative;
+        height: 100vh;
+
+        .panel {
+            position: absolute;
+            inset: 0;
+            padding: 120px 60px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s ease;
+
+            &.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateX(0);
+            }
+
+            &.exit {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+        }
+
+        // 소개 패널
+        .panel-intro {
+            .scroll-item {
+                opacity: 0;
+                transform: translateY(16px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+
+                &.visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                &:nth-child(1) {
+                    transition-delay: 0s;
+                }
+
+                &:nth-child(2) {
+                    transition-delay: 0.15s;
+                }
+
+                &:nth-child(3) {
+                    transition-delay: 0.3s;
+                }
+
+                &:nth-child(4) {
+                    transition-delay: 0.45s;
+                }
+
+                &:nth-child(5) {
+                    transition-delay: 0.6s;
+                }
+            }
+
+            .keywords {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+
+                span {
+                    font-size: 12px;
+                    padding: 6px 14px;
+                    border: 1px solid rgba(255, 255, 255, 0.2);
+                    border-radius: 50px;
+                    color: #aaa;
+                    letter-spacing: 0.5px;
+                    transition: border-color 0.3s ease, color 0.3s ease;
+
+                    &:hover {
+                        border-color: rgba(255, 213, 86, 0.5);
+                        color: #ffd250;
+                    }
+                }
+            }
+        }
+
+        // 학력/경력
+        .panel-detail {
+            display: flex;
+            flex-direction: column;
+            padding: 120px 60px 60px;
+            align-items: start;
+            margin-left: -280px;
+            margin-top: 120px;
+
+            .col {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .row-top {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+
+            .row-bottom {
+                width: 100%;
+                padding-top: 40px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+                .certificate ul {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 20px;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+
+                        .cert-date {
+                            font-size: 16px;
+                            color: #666;
+                        }
+
+                        .cert-title {
+                            font-size: 20px;
+                            font-weight: 600;
+                            color: #fff;
+                            word-break: keep-all;
+                        }
+                    }
+                }
+            }
+
+            h3,
+            h2 {
+                font-size: 40px;
+                font-weight: 700;
+                margin-bottom: 32px;
+            }
+
+            .history {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 28px;
+
+                li {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+
+                    .date {
+                        font-size: 16px;
+                        color: #666;
+                        font-weight: 300;
+                    }
+
+                    .name {
+                        font-size: 20px;
+                        font-weight: 600;
+                        color: #fff;
+                    }
+
+                    .program,
+                    .team {
+                        font-size: 16px;
+                        color: #888;
+                        font-weight: 300;
+                        margin-top: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+
+}

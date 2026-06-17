@@ -1,0 +1,26 @@
+.profile {
+    position: relative;
+
+    .info {
+        margin-left: -250px;
+
+        .job-title {
+            margin-top: 150px;
+            font-size: 20px;
+            font-weight: 200;
+            margin-bottom: 50px;
+        }
+
+        h3 {
+            font-size: 90px;
+            font-weight: 800;
+            margin-bottom: 150px;
+        }
+
+        .bio {
+            font-size: 25px;
+            font-weight: 400;
+            margin-bottom: 50px;
+        }
+    }
+}

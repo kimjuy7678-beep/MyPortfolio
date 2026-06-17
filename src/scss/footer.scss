@@ -1,0 +1,132 @@
+.footer {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .footer-left {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        .footer-logo {
+            font-family: var(--logo);
+            font-size: 45px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 15px;
+            font-weight: 200;
+            color: #666;
+        }
+
+        .footer-icons {
+            display: flex;
+            gap: 12px;
+
+            button,
+            a {
+                width: 44px;
+                height: 44px;
+                border-radius: 50%;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                background: none;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+
+                img {
+                    width: 18px;
+                    height: 18px;
+                    filter: invert(1) brightness(0.7);
+                }
+
+                &:hover {
+                    border-color: rgba(255, 213, 86, 0.5);
+                    background: rgba(255, 213, 86, 0.08);
+
+                    img {
+                        filter: invert(1) brightness(1);
+                    }
+                }
+            }
+        }
+    }
+
+    .copyright {
+        font-size: 12px;
+        font-weight: 200;
+        color: #444;
+        text-transform: uppercase;
+        align-self: flex-end;
+    }
+}
+
+.mail-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.mail-popup {
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px 40px;
+    text-align: center;
+    position: relative;
+    font-weight: 200;
+
+    p {
+        font-size: 14px;
+        color: #aaa;
+        margin-bottom: 20px;
+    }
+
+    .mail-options {
+        display: flex;
+        gap: 12px;
+
+        button {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                border-color: rgba(255, 213, 86, 0.5);
+                background: rgba(255, 213, 86, 0.08);
+                color: #ffd250;
+            }
+        }
+    }
+
+    .mail-close {
+        position: absolute;
+        top: 12px;
+        right: 16px;
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover {
+            color: #fff;
+        }
+    }
+}
