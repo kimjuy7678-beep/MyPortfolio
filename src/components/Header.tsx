@@ -9,6 +9,13 @@ const Header = ({ isOn }: HeaderProps) => {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const handleDownload = () => {
+        const link = document.createElement('a');
+        link.href = '/Resume.pdf';
+        link.download = '김주연_이력서.pdf';
+        link.click();
+    };
+
     const handleNavClick = (id: string) => {
         if (location.pathname !== '/') {
             navigate('/');
@@ -35,7 +42,7 @@ const Header = ({ isOn }: HeaderProps) => {
                     <li><a onClick={() => handleNavClick('projects')} style={{ cursor: 'pointer' }}>projects</a></li>
                     <li><Link to="/design-archive">design</Link></li>
                 </ul>
-                <button className="resume">이력서 다운받기</button>
+                <button className="resume" onClick={handleDownload}>이력서 다운받기</button>
             </div>
         </header>
     )

@@ -8,7 +8,7 @@ const Footer = () => {
 
     const handleDownload = () => {
         const link = document.createElement('a');
-        link.href = '/resume.pdf';
+        link.href = '/Resume.pdf';
         link.download = '김주연_이력서.pdf';
         link.click();
     };
