@@ -124,6 +124,7 @@ export const projectData = {
             link: "https://namyangju-sp.onrender.com/",
             github: "https://github.com/kimjuy7678-beep/namyangju_SP.git",
             tags: ["HTML5", "CSS3", "JavaScript", "CursorAI"]
-        }
+        },
+
     ]
 }
