@@ -34,6 +34,16 @@ const About = () => {
         })
     }, [panel])
 
+    useEffect(() => {
+        const isMobile = window.matchMedia('(max-width: 1024px)').matches
+        if (!isMobile) return
+
+        const items = document.querySelectorAll('.panel-detail .item')
+        items.forEach((el, i) => {
+            setTimeout(() => el.classList.add('visible'), i * 80)
+        })
+    }, [])
+
     return (
         <section id="about" className='About'>
             <h2>About <span>소개</span></h2>

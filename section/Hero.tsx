@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import '../src/scss/hero.scss'
 
 interface HeroProps {
@@ -6,17 +6,27 @@ interface HeroProps {
     setIsOn: (value: boolean) => void;
 }
 
+const FINAL_STEP = 5;
+
 const Hero = ({ isOn, setIsOn }: HeroProps) => {
-    const [step, setStep] = useState(0);
+    const wasOnAtMount = useRef(isOn);
+
+    const [step, setStep] = useState(() => (wasOnAtMount.current ? FINAL_STEP : 0));
 
     useEffect(() => {
+        if (wasOnAtMount.current) {
+            setStep(FINAL_STEP);
+            return;
+        }
+
         if (!isOn) { setStep(0); return; }
+
         const timers = [
-            setTimeout(() => setStep(1), 300),   // 슬로건 첫줄
-            setTimeout(() => setStep(2), 1000),   // 슬로건 둘째줄
-            setTimeout(() => setStep(3), 2500),  // 슬로건 올라가고 이름 등장
-            setTimeout(() => setStep(4), 3300),  // Web Publisher
-            setTimeout(() => setStep(5), 3800),  // Marquee
+            setTimeout(() => setStep(1), 300),
+            setTimeout(() => setStep(2), 1000),
+            setTimeout(() => setStep(3), 2500),
+            setTimeout(() => setStep(4), 3300),
+            setTimeout(() => setStep(5), 3800),
         ];
         return () => timers.forEach(clearTimeout);
     }, [isOn]);
@@ -25,7 +35,6 @@ const Hero = ({ isOn, setIsOn }: HeroProps) => {
         <section className={`hero-section${isOn ? ' on' : ''}`}>
             <div className="light" aria-hidden="true" />
 
-            {/* 스위치 - 독립적으로 정중앙 */}
             <div className={`switch${step >= 1 ? ' hide' : ''}`}>
                 <span className="info">YE:ON 개발로 예술을 켜다</span>
                 <span className="icon">↓</span>
@@ -39,7 +48,6 @@ const Hero = ({ isOn, setIsOn }: HeroProps) => {
                 </label>
             </div>
 
-            {/* 콘텐츠 - 별도 위치 */}
             <div className={`hero-content step-${step}`}>
                 <div className="slogan">
                     <p className={step >= 1 ? 'visible' : ''}>디자인의 의도부터 코드의 구현까지,</p>

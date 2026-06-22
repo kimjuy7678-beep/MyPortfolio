@@ -1,12 +1,13 @@
 .projects {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 80px;
-    margin-top: -130px;
+    margin-bottom: 70px;
 
     h2 {
         font-size: 40px;
@@ -23,13 +24,115 @@
         }
     }
 
+    .slider-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        min-width: 0;
+    }
+
+    .slide-fade {
+        position: absolute;
+        top: 180px;
+        bottom: 0;
+        width: 220px;
+        height: 520px;
+        pointer-events: none;
+        z-index: 5;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+
+        &.visible {
+            opacity: 1;
+        }
+
+        &.fade-left {
+            left: 0;
+            background: linear-gradient(to left,
+                    rgba(20, 20, 20, 0) 0%,
+                    rgba(20, 20, 20, 0.35) 30%,
+                    rgba(20, 20, 20, 0.75) 65%,
+                    rgba(20, 20, 20, 0.97) 100%);
+        }
+
+        &.fade-right {
+            right: 0;
+            background: linear-gradient(to right,
+                    rgba(20, 20, 20, 0) 0%,
+                    rgba(20, 20, 20, 0.35) 30%,
+                    rgba(20, 20, 20, 0.75) 65%,
+                    rgba(20, 20, 20, 0.97) 100%);
+        }
+    }
+
+    .slide-btn {
+        position: absolute;
+        top: 60%;
+        transform: translateY(-50%);
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(4px);
+        color: #fff;
+        font-size: 22px;
+        cursor: pointer;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+        z-index: 10;
+        opacity: 1 !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+
+        &.btn-left {
+            left: 24px;
+        }
+
+        &.btn-right {
+            right: 24px;
+        }
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 213, 86, 0.6);
+            color: #ffd250;
+        }
+    }
+
     .slider-wrap {
+        flex: 1;
+        min-width: 0;
         display: flex;
         gap: 24px;
         margin-top: 60px;
         overflow-x: auto;
+        overflow-y: visible;
+        padding-top: 20px;
         padding-bottom: 20px;
+        padding-left: 100px;
+        padding-right: 160px;
         scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+            scroll-snap-type: none;
+        }
+
+        &.dragging {
+            scroll-snap-type: none;
+            user-select: none;
+
+            .project-card {
+                pointer-events: none;
+            }
+        }
 
         &::-webkit-scrollbar {
             display: none;
@@ -38,7 +141,7 @@
 
     .project-card {
         flex-shrink: 0;
-        width: 320px;
+        width: 400px;
         border: 1px solid rgba(255, 255, 255, 0.15);
         border-radius: 12px;
         padding: 28px;
@@ -46,24 +149,45 @@
         flex-direction: column;
         gap: 16px;
         cursor: pointer;
-        transition: transform 0.3s ease, border-color 0.3s ease; // 호버 효과
+        transition: transform 0.3s ease, border-color 0.3s ease;
 
         &:hover {
-            transform: translateY(-10px); // 위로 살짝 올라가기
+            transform: translateY(-10px);
             border-color: rgba(255, 213, 86, 0.4);
         }
 
         .num {
-            font-size: 12px;
+            font-size: 20px;
             color: #ffd250;
             font-weight: 600;
-            letter-spacing: 2px;
         }
 
         h4 {
-            font-size: 16px;
+            font-size: 22px;
             font-weight: 700;
             line-height: 1.4;
+            word-break: keep-all;
+        }
+
+        .awards {
+            display: flex;
+            font-size: 13px;
+            padding: 3px 10px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 213, 86, 0.4);
+            width: fit-content;
+            border-radius: 20px;
+        }
+
+        .label {
+            font-size: 13px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            padding: 3px 10px;
+            border-radius: 20px;
         }
 
         .thumb {
@@ -104,7 +228,6 @@
             color: #fff;
             font-size: 13px;
             font-weight: 600;
-            letter-spacing: 1px;
             cursor: pointer;
             text-align: left;
             padding: 0;
@@ -126,12 +249,112 @@
                 font-size: 18px;
                 font-weight: 700;
                 color: #ffd250;
+                padding: 10px 15px;
             }
 
             p {
-                font-size: 14px;
+                font-size: 16px;
                 color: #888;
-                line-height: 1.8;
+            }
+        }
+    }
+
+    // ===== Responsive =====
+    // 1440px 이하
+    @media (max-width: 1440px) {
+        padding: 0 40px;
+
+        h2 {
+            font-size: 34px;
+        }
+
+        .slider-wrap {
+            gap: 20px;
+        }
+
+        .project-card {
+            width: 320px;
+            padding: 22px;
+        }
+    }
+
+    // 1024px 이하
+    @media (max-width: 1024px) {
+        padding: 0 24px;
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .slider-wrap {
+            padding-left: 80px;
+            padding-right: 120px;
+        }
+
+        .slide-fade {
+            width: 160px;
+        }
+
+        .slide-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 20px;
+
+            &.btn-left {
+                left: 16px;
+            }
+
+            &.btn-right {
+                right: 16px;
+            }
+        }
+
+        .project-card {
+            width: 280px;
+            padding: 18px;
+
+            h4 {
+                font-size: 18px;
+            }
+        }
+    }
+
+    // 768px 이하
+    @media (max-width: 768px) {
+        padding: 0 16px;
+
+        .slider-wrap {
+            gap: 14px;
+            margin-top: 40px;
+            padding-left: 0;
+            padding-right: 16px;
+        }
+
+        .project-card {
+            width: 78vw;
+            max-width: 320px;
+            padding: 16px;
+        }
+
+        .slide-fade {
+            display: none;
+        }
+
+        .slide-btn {
+            top: auto;
+            bottom: -8px;
+            transform: none;
+            width: 36px;
+            height: 36px;
+            font-size: 16px;
+            background: rgba(255, 255, 255, 0.12);
+
+            &.btn-left {
+                left: 16px;
+            }
+
+            &.btn-right {
+                right: 16px;
             }
         }
     }

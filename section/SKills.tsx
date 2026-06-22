@@ -14,12 +14,10 @@ const Skills = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // 그래프
                     if (entry.target.classList.contains('bar-fill')) {
                         const bar = entry.target as HTMLElement
                         bar.style.width = bar.dataset.percent + '%'
                     }
-                    // 우측 설명
                     if (entry.target.tagName === 'LI') {
                         entry.target.classList.add('visible')
                     }
@@ -37,7 +35,6 @@ const Skills = () => {
             <h2>Skills <span>기술</span></h2>
 
             <div className="skill-wrap">
-                {/* 좌측 그래프 */}
                 <div className="stack">
                     <p className="label">ALL TECH STACK</p>
                     <ul>
@@ -56,7 +53,6 @@ const Skills = () => {
                     </ul>
                 </div>
 
-                {/* 우측 설명 */}
                 <div className="performance">
                     <p className="label">PERFORMANCE</p>
                     <ul>

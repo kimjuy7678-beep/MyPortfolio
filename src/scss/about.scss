@@ -1,15 +1,14 @@
 .About {
     position: relative;
     width: 100%;
-    min-height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    overflow: visible;
+    grid-template-columns: 45vw 1fr;
+    overflow: hidden;
 
     h2 {
         position: absolute;
-        top: 40px;
-        left: 80px;
+        top: clamp(20px, 3vh, 40px);
+        left: clamp(40px, 5vw, 80px);
         font-size: 40px;
         font-weight: 800;
         text-transform: uppercase;
@@ -27,8 +26,8 @@
     // 화살표 버튼
     .arrow-btn {
         position: absolute;
-        top: 40px;
-        right: 80px;
+        top: clamp(20px, 3vh, 40px);
+        right: clamp(40px, 5vw, 80px);
         width: 52px;
         height: 52px;
         border-radius: 50%;
@@ -58,18 +57,20 @@
         position: relative;
         height: 100vh;
         overflow: visible;
+        display: flex;
+        align-items: flex-end;
 
         img {
-            width: 70%;
-            height: 70%;
+            width: 100%;
+            height: 85vh;
+            max-width: 100%;
             object-fit: cover;
             object-position: top center;
-            padding-top: 150px;
-            margin-left: 50px;
+            margin-left: clamp(20px, 3vw, 60px);
         }
     }
 
-    // 우측 콘텐츠 영역
+    // 우측 콘텐츠
     .right {
         position: relative;
         height: 100vh;
@@ -77,7 +78,7 @@
         .panel {
             position: absolute;
             inset: 0;
-            padding: 120px 60px 60px;
+            padding: clamp(60px, 8vh, 120px) clamp(30px, 4vw, 60px);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -98,7 +99,7 @@
             }
         }
 
-        // 소개 패널
+        // 소개
         .panel-intro {
             .scroll-item {
                 opacity: 0;
@@ -157,10 +158,10 @@
         .panel-detail {
             display: flex;
             flex-direction: column;
-            padding: 120px 60px 60px;
+            padding: 150px 0 60px;
             align-items: start;
-            margin-left: -280px;
-            margin-top: 120px;
+            margin-left: -200px;
+            margin-top: 0;
 
             .col {
                 display: flex;
@@ -194,12 +195,12 @@
                         gap: 4px;
 
                         .cert-date {
-                            font-size: 16px;
+                            font-size: clamp(13px, 1.2vw, 16px);
                             color: #666;
                         }
 
                         .cert-title {
-                            font-size: 20px;
+                            font-size: clamp(15px, 1.5vw, 20px);
                             font-weight: 600;
                             color: #fff;
                             word-break: keep-all;
@@ -210,7 +211,7 @@
 
             h3,
             h2 {
-                font-size: 40px;
+                font-size: clamp(24px, 2.5vw, 40px);
                 font-weight: 700;
                 margin-bottom: 32px;
             }
@@ -229,20 +230,20 @@
                     gap: 4px;
 
                     .date {
-                        font-size: 16px;
+                        font-size: clamp(13px, 1.2vw, 16px);
                         color: #666;
                         font-weight: 300;
                     }
 
                     .name {
-                        font-size: 20px;
+                        font-size: clamp(15px, 1.5vw, 20px);
                         font-weight: 600;
                         color: #fff;
                     }
 
                     .program,
                     .team {
-                        font-size: 16px;
+                        font-size: clamp(13px, 1.2vw, 16px);
                         color: #888;
                         font-weight: 300;
                         margin-top: 10px;
@@ -252,5 +253,162 @@
         }
     }
 
+    // ===== Responsive =====
+    // 1440px 이하
+    @media (max-width: 1440px) {
+        .right .panel-detail {
+            margin-left: -100px;
+        }
 
+        .right .panel-detail .row-bottom .certificate ul {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    // 1024px 이하
+    @media (max-width: 1024px) {
+        display: block !important;
+        padding: 0 24px;
+
+        .left {
+            float: left;
+            position: relative;
+            width: 220px;
+            height: 280px;
+            margin: 0 24px 24px 0;
+
+            img {
+                position: static;
+                width: 100%;
+                height: 100%;
+                margin-left: 0;
+                object-fit: cover;
+                object-position: top center;
+            }
+        }
+
+        .right {
+            height: auto !important;
+            display: block !important;
+        }
+
+        .panel {
+            position: relative !important;
+            inset: auto !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            padding: 0 !important;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+
+        .panel-intro {
+            .keywords {
+                clear: both;
+                margin-top: 8px;
+            }
+        }
+
+        .panel-detail {
+            clear: both !important;
+            margin-left: 0 !important;
+            margin-top: 32px !important;
+            padding: 32px 0 40px !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex !important;
+            flex-direction: column;
+
+            .row-top {
+                grid-template-columns: 1fr !important;
+                gap: 32px !important;
+            }
+
+            .row-bottom .certificate ul {
+                grid-template-columns: 1fr !important;
+                gap: 18px !important;
+            }
+        }
+
+        h2 {
+            position: relative !important;
+            top: 0 !important;
+            left: 0 !important;
+            margin-bottom: 24px;
+            z-index: 10;
+        }
+
+        .arrow-btn {
+            display: none;
+        }
+
+        .scroll-item {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    }
+
+    // 768px 이하
+    @media (max-width: 768px) {
+        padding: 0 20px;
+
+        .left {
+            width: 150px;
+            height: 220px;
+            margin: 0 18px 18px 0;
+        }
+
+        h2 {
+            font-size: 32px;
+        }
+
+        .panel-detail {
+            margin-top: 24px !important;
+            padding: 24px 0 32px !important;
+        }
+
+        .panel-intro,
+        .panel-detail {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-break: keep-all;
+        }
+    }
+
+    // 480px 이하
+    @media (max-width: 480px) {
+        padding: 0 16px;
+
+        h2 {
+            font-size: 26px;
+            padding: 6px 12px;
+            background: rgba(20, 20, 20, 0.6);
+            border-radius: 8px;
+            backdrop-filter: blur(6px);
+
+            span {
+                font-size: 13px;
+            }
+        }
+
+        .left {
+            width: 110px;
+            height: 170px;
+            margin: 0 14px 18px 0;
+        }
+
+        .panel-intro .keywords span {
+            font-size: 11px;
+            padding: 5px 12px;
+        }
+
+        .panel-detail {
+            .row-top {
+                gap: 24px;
+            }
+        }
+    }
 }

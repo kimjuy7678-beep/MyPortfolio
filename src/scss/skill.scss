@@ -1,21 +1,20 @@
 .skills {
     position: relative;
     width: 100%;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 100px 80px;
+    padding: clamp(40px, 6vh, 100px) clamp(40px, 5vw, 80px);
 
     h2 {
-        font-size: 40px;
+        font-size: clamp(28px, 3vw, 40px);
         font-weight: 800;
         text-transform: uppercase;
         margin-bottom: 4px;
 
         span {
             display: block;
-            font-size: 20px;
+            font-size: clamp(14px, 1.5vw, 20px);
             font-weight: 300;
             color: #aaa;
             margin-top: 4px;
@@ -25,18 +24,18 @@
     .skill-wrap {
         display: grid;
         grid-template-columns: 4fr 6fr;
-        gap: 80px;
-        margin-top: 60px;
+        gap: clamp(40px, 5vw, 80px);
+        margin-top: clamp(30px, 4vh, 60px);
+        margin-left: clamp(0px, 6vw, 100px);
 
         .label {
-            font-size: 15px;
+            font-size: clamp(12px, 1vw, 15px);
             font-weight: 200;
             color: #aaa;
-            margin-bottom: 32px;
+            margin-bottom: clamp(16px, 2vh, 32px);
             letter-spacing: 2px;
         }
 
-        // 좌측 그래프
         .stack {
             ul {
                 list-style: none;
@@ -44,16 +43,16 @@
                 margin: 0;
                 display: flex;
                 flex-direction: column;
-                gap: 33px;
+                gap: clamp(16px, 2vh, 33px);
 
                 li {
                     display: grid;
-                    grid-template-columns: 140px 1fr 40px;
+                    grid-template-columns: minmax(80px, 140px) 1fr 40px;
                     align-items: center;
                     gap: 12px;
 
                     .tech-name {
-                        font-size: 17px;
+                        font-size: clamp(13px, 1.2vw, 17px);
                         font-weight: 400;
                         color: #ccc;
                     }
@@ -74,7 +73,7 @@
                     }
 
                     .percent {
-                        font-size: 15px;
+                        font-size: clamp(12px, 1vw, 15px);
                         color: #666;
                         text-align: right;
                     }
@@ -82,9 +81,8 @@
             }
         }
 
-        // 우측 설명
         .performance {
-            margin-left: 150px;
+            margin-left: clamp(0px, 8vw, 250px);
 
             ul {
                 list-style: none;
@@ -92,7 +90,7 @@
                 margin: 0;
                 display: flex;
                 flex-direction: column;
-                gap: 40px;
+                gap: clamp(20px, 3vh, 40px);
                 margin-top: -13px;
 
                 li {
@@ -118,32 +116,103 @@
                     }
 
                     .num {
-                        font-size: 15px;
+                        font-size: clamp(12px, 1vw, 15px);
                         color: #ffd250;
                         font-weight: 600;
                         letter-spacing: 2px;
                     }
 
                     h3 {
-                        font-size: 23px;
+                        font-size: clamp(16px, 1.8vw, 23px);
                         font-weight: 700;
                         margin: 6px 0 8px;
                         letter-spacing: 1px;
                     }
 
                     .tags {
-                        font-size: 16px;
+                        font-size: clamp(13px, 1.2vw, 16px);
                         font-weight: 300;
                         color: #ccc;
                         margin-bottom: 20px;
                     }
 
                     .desc {
-                        font-size: 17px;
+                        font-size: clamp(13px, 1.3vw, 17px);
                         font-weight: 300;
                         color: #888;
                         line-height: 1.8;
                     }
+                }
+            }
+        }
+    }
+
+    // ===== Responsive =====
+    // 1024px 이하
+    @media (max-width: 1024px) {
+        .skill-wrap {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+            gap: 48px;
+
+            .performance {
+                margin-left: 0;
+            }
+
+            .stack ul li {
+                grid-template-columns: minmax(70px, 110px) minmax(0, 1fr) 36px;
+            }
+        }
+    }
+
+    // 768px 이하
+    @media (max-width: 768px) {
+        width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+
+        .skill-wrap {
+            gap: 32px;
+            width: 100%;
+
+            .stack ul li {
+                grid-template-columns: minmax(60px, 90px) minmax(0, 1fr) 32px;
+                gap: 8px;
+
+                .percent {
+                    flex-shrink: 0;
+                }
+            }
+        }
+    }
+
+    // 480px 이하
+    @media (max-width: 480px) {
+        padding: clamp(28px, 6vh, 50px) 20px;
+
+        .skill-wrap {
+            margin-left: 0;
+
+            .stack ul li {
+                grid-template-columns: minmax(48px, 70px) minmax(0, 1fr) 28px;
+                gap: 6px;
+
+                .tech-name {
+                    font-size: 12px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .percent {
+                    font-size: 11px;
+                }
+            }
+
+            .performance ul li {
+                .desc {
+                    word-break: keep-all;
+                    overflow-wrap: break-word;
                 }
             }
         }

@@ -4,10 +4,11 @@ export const techStack = [
     { name: "JavaScript", percent: 65 },
     { name: "jQuery", percent: 65 },
     { name: "React", percent: 55 },
+    { name: "TypeScript", percent: 55 },
     { name: "Figma", percent: 95 },
     { name: "Photoshop", percent: 90 },
     { name: "Illustrator", percent: 85 },
-    { name: "Git", percent: 70 },
+    { name: "Github", percent: 70 },
 ]
 
 export const performance = [

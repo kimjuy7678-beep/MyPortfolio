@@ -17,7 +17,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
         background: radial-gradient(circle, rgba(180, 180, 180, 0.18) 0%, transparent 70%);
-        transition: background 1.2s ease, opacity 0.1s ease;
+        transition: background 1.2s ease;
     }
 
     &.on .light {
@@ -30,28 +30,23 @@
 
     @keyframes flicker {
 
-        0%,
-        100% {
+        0% {
             opacity: 1;
         }
 
-        45% {
-            opacity: 0.85;
+        30% {
+            opacity: 0.88;
         }
 
         50% {
-            opacity: 0.6;
+            opacity: 0.78;
         }
 
-        55% {
+        70% {
             opacity: 0.9;
         }
 
-        75% {
-            opacity: 0.75;
-        }
-
-        80% {
+        100% {
             opacity: 1;
         }
     }
@@ -147,7 +142,7 @@
         width: 100%;
 
         .slogan p {
-            font-size: 20px;
+            font-size: clamp(14px, 1.5vw, 20px);
             font-weight: 200;
             color: #aaa;
             line-height: 1.5;
@@ -217,7 +212,7 @@
 
         p {
             display: inline-block;
-            font-size: 250px;
+            font-size: clamp(120px, 16vw, 250px);
             font-weight: 800;
             white-space: nowrap;
             letter-spacing: 8px;
@@ -238,5 +233,72 @@
 
     100% {
         transform: translateX(-50%);
+    }
+}
+
+// ===== Responsive =====
+// 1440px 이하
+@media (max-width: 1440px) {
+    .hero-section {
+        .light {
+            width: 640px;
+            height: 640px;
+        }
+
+        .bg-name p {
+            font-size: clamp(90px, 16vw, 250px);
+        }
+    }
+}
+
+// 1024px 이하
+@media (max-width: 1024px) {
+    .hero-section {
+        .light {
+            width: 480px;
+            height: 480px;
+        }
+
+        .hero-content {
+            width: 90%;
+        }
+
+        .bg-name p {
+            font-size: clamp(70px, 18vw, 200px);
+        }
+    }
+}
+
+// 768px 이하
+@media (max-width: 768px) {
+    .hero-section {
+        .light {
+            width: 320px;
+            height: 320px;
+        }
+
+        .switch {
+            .toggle {
+                width: 52px;
+                height: 26px;
+            }
+        }
+
+        .hero-content {
+            width: 92%;
+
+            .name h2 {
+                font-size: clamp(36px, 9vw, 60px);
+            }
+        }
+
+        .bg-name {
+            bottom: 40px;
+
+            p {
+                font-size: clamp(48px, 22vw, 140px);
+                letter-spacing: 4px;
+            }
+        }
     }
 }

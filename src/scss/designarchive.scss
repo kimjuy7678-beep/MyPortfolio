@@ -1,0 +1,432 @@
+.design-archive {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 140px 80px 100px;
+
+    .back-btn {
+        position: fixed;
+        top: 24px;
+        left: 80px;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 500;
+        padding: 8px 16px;
+        border-radius: 50px;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: background 0.3s ease, border-color 0.3s ease;
+
+        &:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 213, 86, 0.5);
+            color: #ffd250;
+        }
+    }
+
+    h2 {
+        font-size: 40px;
+        font-weight: 800;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+
+        span {
+            display: block;
+            font-size: 20px;
+            font-weight: 300;
+            color: #aaa;
+            margin-top: 4px;
+        }
+    }
+
+    .masonry-grid {
+        column-count: 4;
+        column-gap: 20px;
+        margin-top: 50px;
+    }
+
+    .grid-item {
+        break-inside: avoid;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        cursor: pointer;
+
+        .grid-item-inner {
+            position: relative;
+            width: 100%;
+            line-height: 0;
+
+            img {
+                width: 100%;
+                height: auto;
+                display: block;
+                border-radius: 12px;
+                transition: transform 0.4s ease;
+            }
+        }
+
+        .grid-item-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            background: linear-gradient(to top,
+                    rgba(0, 0, 0, 0.75) 0%,
+                    rgba(0, 0, 0, 0.25) 45%,
+                    rgba(0, 0, 0, 0) 75%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            .category {
+                font-size: 11px;
+                font-weight: 600;
+                color: #ffd250;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                margin-bottom: 6px;
+            }
+
+            .title {
+                font-size: 15px;
+                font-weight: 600;
+                color: #fff;
+                line-height: 1.4;
+                word-break: keep-all;
+            }
+        }
+
+        &:hover {
+            .grid-item-inner img {
+                transform: scale(1.04);
+            }
+
+            .grid-item-overlay {
+                opacity: 1;
+            }
+        }
+    }
+
+    // ===== 디자인 상세 모달 =====
+    // 베이스(전체 화면 공통) 규칙은 원래 상태 그대로 유지 — 데스크탑/웹
+    // 화면에서 설명 영역이 좁아지거나 레이아웃이 바뀌는 걸 막기 위해
+    // 모바일 전용 보정은 전부 맨 아래 @media (max-width: 767px) 블록
+    // 안에서만 처리함
+    .design-modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        padding: 24px;
+    }
+
+    .design-modal {
+        background: #1a1a1a;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 12px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
+    }
+
+    .modal-close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        z-index: 10;
+    }
+
+    .modal-image-wrap {
+        position: relative;
+        background: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin: 0 auto;
+        min-width: 200px;
+        min-height: 200px;
+
+        // 새 이미지(아래 레이어, 항상 opacity:1)와 이전 이미지(위 레이어,
+        // fade-out 시 opacity:0) 두 장을 겹쳐서 동시에 교차되도록 함 —
+        // 예전엔 한 장을 0으로 줄였다가 src를 바꾸고 다시 1로 올리는
+        // 방식이라, 중간에 배경색(#000)이 그대로 드러나며 화면이
+        // 어두워졌다가 나타나는 문제가 있었음
+        .modal-img-base,
+        .modal-fade-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .modal-img-base {
+            z-index: 1;
+        }
+
+        .modal-fade-img {
+            z-index: 2;
+            opacity: 1;
+            transition: opacity 0.2s ease;
+
+            &.fade-out {
+                opacity: 0;
+            }
+        }
+    }
+
+    .modal-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 22px;
+        line-height: 1;
+        cursor: pointer;
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s ease, color 0.2s ease;
+
+        &:hover {
+            background: rgba(255, 213, 86, 0.8);
+            color: #1a1a1a;
+        }
+    }
+
+    .modal-arrow-left {
+        left: 12px;
+    }
+
+    .modal-arrow-right {
+        right: 12px;
+    }
+
+    .modal-image-count {
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: 50px;
+        z-index: 5;
+    }
+
+    .modal-thumbnails {
+        display: flex;
+        gap: 8px;
+        padding: 12px;
+        overflow-x: auto;
+
+        img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.6;
+            flex-shrink: 0;
+
+            &.active {
+                opacity: 1;
+                outline: 2px solid #ffd250;
+            }
+        }
+    }
+
+    .modal-info {
+        flex: 1;
+        padding: 24px;
+        color: #fff;
+        word-break: keep-all;
+
+        .category {
+            font-size: 12px;
+            color: #ffd250;
+            text-transform: uppercase;
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 8px 0 12px;
+        }
+
+        .description-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            li {
+                font-size: 14px;
+                color: #ccc;
+                line-height: 1.6;
+                padding-left: 16px;
+                position: relative;
+
+                &::before {
+                    content: '○';
+                    position: absolute;
+                    left: 0;
+                    color: #ffd250;
+                    font-size: 10px;
+                    top: 4px;
+                }
+            }
+        }
+    }
+
+    // ===== Responsive =====
+    // 1440px 이하
+    @media (max-width: 1440px) {
+        padding: 120px 40px 80px;
+
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 16px;
+        }
+
+        h2 {
+            font-size: 34px;
+        }
+    }
+
+    // 1024px 이하
+    @media (max-width: 1024px) {
+        padding: 110px 24px 60px;
+
+        .back-btn {
+            left: 24px;
+        }
+
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 14px;
+            margin-top: 36px;
+        }
+
+        h2 {
+            font-size: 28px;
+        }
+
+        .grid-item {
+            margin-bottom: 14px;
+
+            .grid-item-overlay {
+                padding: 14px;
+
+                .title {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    // 768px 이하
+    @media (max-width: 768px) {
+        padding: 100px 16px 50px;
+
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 10px;
+        }
+
+        .grid-item {
+            margin-bottom: 10px;
+            border-radius: 8px;
+
+            .grid-item-inner img {
+                border-radius: 8px;
+            }
+
+            .grid-item-overlay {
+                opacity: 1;
+                padding: 10px;
+                background: linear-gradient(to top,
+                        rgba(0, 0, 0, 0.8) 0%,
+                        rgba(0, 0, 0, 0) 60%);
+
+                .category {
+                    font-size: 10px;
+                }
+
+                .title {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    // 767px 이하
+    @media (max-width: 767px) {
+        .design-modal {
+            height: 88vh;
+            max-height: 88vh;
+            overflow: hidden;
+        }
+
+        .modal-image-wrap {
+            max-width: 100%;
+            max-height: 45vh;
+            flex-shrink: 0;
+        }
+
+        .modal-thumbnails {
+            flex-shrink: 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .modal-info {
+            min-height: 0;
+            overflow-y: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}
