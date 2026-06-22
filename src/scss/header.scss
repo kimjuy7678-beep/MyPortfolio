@@ -16,11 +16,12 @@ html {
     box-sizing: border-box;
     transition: background 0.8s ease, color 0.8s ease;
     background: rgba(30, 30, 30, 0.6);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 
     &.dark {
+        -webkit-backdrop-filter: blur(8px);
         backdrop-filter: blur(8px);
 
         .logo,
