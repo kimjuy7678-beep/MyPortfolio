@@ -126,13 +126,18 @@ const Projects = () => {
 
             <div className="slider-container">
                 <div className="slider-wrap" ref={sliderRef}>
-                    {projectData.academy.map((project, i) => (
+                    {projectData.personal.map((project, i) => (
                         <ProjectCard key={project.id} project={project} index={i}
+                            onClick={() => setSelectedProject(project)} />
+                    ))}
+                    {projectData.academy.map((project, i) => (
+                        <ProjectCard key={project.id} project={project}
+                            index={projectData.personal.length + i}
                             onClick={() => setSelectedProject(project)} />
                     ))}
                     {projectData.company.map((project, i) => (
                         <ProjectCard key={project.id} project={project}
-                            index={projectData.academy.length + i}
+                            index={projectData.personal.length + projectData.academy.length + i}
                             onClick={() => setSelectedProject(project)} />
                     ))}
                     <DesignCard />

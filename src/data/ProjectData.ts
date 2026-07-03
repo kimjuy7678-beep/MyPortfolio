@@ -1,7 +1,68 @@
 export const projectData = {
+    personal: [
+        {
+            id: 2,
+            awards: "미완성",
+            title: "결 - 가죽공방 클래스 웹사이트",
+            label: "Personal",
+            date: "2026.07.02 ~ 2026.07.03",
+            contribution: "100%",
+            role: "기획·디자인·웹퍼블리싱",
+            desc: [
+                "브랜드 기획 및 디자인 시스템 구축: 가죽공예 공방 브랜드 '결'을 기획하고, 우드톤/올리브 컬러 팔레트와 캘리그라피 로고를 활용한 디자인 시스템을 구축했습니다.",
+                "Cafe24 스마트디자인 커스터마이징: Cafe24를 처음 다뤄보는 환경에서, 커스텀 HTML/CSS 섹션을 직접 작성해 클래스 안내, 브랜드 소개, 갤러리 등 메인 페이지 전체를 구현했습니다.",
+                "반응형 레이아웃 구현: Flexbox 기반으로 이미지-텍스트 좌우 배치, 4단 카드형 클래스 안내 그리드를 구성하고, 미디어 쿼리로 모바일 환경에 대응했습니다.",
+                "실무 CMS 환경 적응 및 문제 해결: Cafe24 위젯(스마트배너, 지도)과 커스텀 HTML 영역의 차이를 파악해 역할을 분리하고, 정렬 오류 등 레이아웃 이슈를 스스로 디버깅하며 완성도를 높였습니다."
+            ],
+            pages: [
+                "메인 홈 페이지 (히어로 · 브랜드 소개)"
+            ],
+            images: [
+                "/images/leathercraft/leathercraft01.png",
+                "/images/leathercraft/leathercraft02.png",
+                "/images/leathercraft/leathercraft03.png"
+            ],
+            link: "https://juy0417.cafe24.com/",
+            github: "",
+            tags: ["Cafe24", "HTML", "CSS", "반응형 웹퍼블리싱"]
+        },
+        {
+            id: 2,
+            awards: "",
+            title: "Aerter 향수 브랜드 웹사이트",
+            label: "Personal",
+            date: "2026.06.30 ~ 2026.07.02",
+            contribution: "100%",
+            role: "기획·디자인·프론트엔드 개발",
+            desc: [
+                "브랜드 기획 및 디자인 시스템 구축: 럭셔리 향수 브랜드 컨셉을 기획하고, Figma로 컬러/타이포/레이아웃 디자인 시스템을 설계했습니다.",
+                "React + TypeScript 아키텍처 설계: Context API로 인증·장바구니·위시리스트·주문·배송지 상태를 역할별로 분리하고, localStorage로 영속화했습니다.",
+                "결제 플로우 및 배송지 관리 구현: 3단계 결제 플로우와 카카오 주소 검색 연동, 저장 배송지 자동 입력 및 신규 배송지 추가 기능을 구현했습니다.",
+                "CMS/API 연동 대비 설계: 데이터와 UI를 완전히 분리해 Mock 데이터를 실제 API 응답으로 교체해도 컴포넌트 수정 없이 연동 가능한 구조로 설계했습니다."
+            ],
+            pages: [
+                "메인 홈 페이지",
+                "컬렉션 페이지 (필터링)",
+                "상품 상세 페이지",
+                "장바구니 · 결제 페이지",
+                "마이페이지 (배송지 관리)"
+            ],
+            images: [
+                "/images/aerter/aerter01.png",
+                "/images/aerter/aerter02.png",
+                "/images/aerter/aerter03.png",
+                "/images/aerter/aerter04.png",
+                "/images/aerter/aerter05.png",
+                "/images/aerter/aerter06.png"
+            ],
+            link: "https://aerter.vercel.app/",
+            github: "https://github.com/kimjuy7678-beep/Aerter",
+            tags: ["React", "TypeScript", "Tailwind CSS", "Vite"]
+        }
+    ],
     academy: [
         {
-            id: 1,
+            id: 2,
             awards: "최우수상",
             title: "애니OTT Laftel 웹사이트 리뉴얼 프로젝트",
             label: "Team",
@@ -34,7 +95,7 @@ export const projectData = {
             tags: ["Next.js", "React", "TailwindCSS", "SASS"]
         },
         {
-            id: 2,
+            id: 3,
             awards: "최우수상",
             title: "가구브랜드 iloom 웹사이트 리뉴얼 프로젝트",
             label: "Team",
@@ -66,7 +127,7 @@ export const projectData = {
             tags: ["TypeScript", "React", "JavaScript", "SCSS/SASS"]
         },
         {
-            id: 3,
+            id: 4,
             title: "CGV 웹사이트 리뉴얼 프로젝트",
             label: "Team",
             date: "2026.01.06 ~ 2026.03.16",
@@ -99,7 +160,7 @@ export const projectData = {
     ],
     company: [
         {
-            id: 4,
+            id: 5,
             title: "남양주남부경찰서 피해자지원사이트 개발",
             label: "Business",
             date: "2025.05.06 ~ 2025.06.27",
