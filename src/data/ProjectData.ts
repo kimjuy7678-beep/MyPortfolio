@@ -2,10 +2,10 @@ export const projectData = {
     personal: [
         {
             id: 1,
-            awards: "기능 미완성",
+            awards: "개인프로젝트",
             title: "Aerter 향수 브랜드 웹사이트",
             label: "Personal",
-            date: "2026.06.30 ~ 2026.07.02",
+            date: "2026.06.30 ~ 2026.07.06",
             contribution: "100%",
             role: "기획·디자인·프론트엔드 개발",
             desc: [
@@ -19,7 +19,8 @@ export const projectData = {
                 "컬렉션 페이지 (필터링)",
                 "상품 상세 페이지",
                 "장바구니 · 결제 페이지",
-                "마이페이지 (배송지 관리)"
+                "마이페이지 (배송지 관리)",
+                "관리자페이지(/admin)pw:1234))"
             ],
             images: [
                 "/images/aerter/aerter01.png",
