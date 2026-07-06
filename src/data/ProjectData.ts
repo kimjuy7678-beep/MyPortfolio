@@ -1,34 +1,8 @@
 export const projectData = {
     personal: [
         {
-            id: 2,
-            awards: "미완성",
-            title: "결 - 가죽공방 클래스 웹사이트",
-            label: "Personal",
-            date: "2026.07.02 ~ 2026.07.03",
-            contribution: "100%",
-            role: "기획·디자인·웹퍼블리싱",
-            desc: [
-                "브랜드 기획 및 디자인 시스템 구축: 가죽공예 공방 브랜드 '결'을 기획하고, 우드톤/올리브 컬러 팔레트와 캘리그라피 로고를 활용한 디자인 시스템을 구축했습니다.",
-                "Cafe24 스마트디자인 커스터마이징: Cafe24를 처음 다뤄보는 환경에서, 커스텀 HTML/CSS 섹션을 직접 작성해 클래스 안내, 브랜드 소개, 갤러리 등 메인 페이지 전체를 구현했습니다.",
-                "반응형 레이아웃 구현: Flexbox 기반으로 이미지-텍스트 좌우 배치, 4단 카드형 클래스 안내 그리드를 구성하고, 미디어 쿼리로 모바일 환경에 대응했습니다.",
-                "실무 CMS 환경 적응 및 문제 해결: Cafe24 위젯(스마트배너, 지도)과 커스텀 HTML 영역의 차이를 파악해 역할을 분리하고, 정렬 오류 등 레이아웃 이슈를 스스로 디버깅하며 완성도를 높였습니다."
-            ],
-            pages: [
-                "메인 홈 페이지 (히어로 · 브랜드 소개)"
-            ],
-            images: [
-                "/images/leathercraft/leathercraft01.png",
-                "/images/leathercraft/leathercraft02.png",
-                "/images/leathercraft/leathercraft03.png"
-            ],
-            link: "https://juy0417.cafe24.com/",
-            github: "",
-            tags: ["Cafe24", "HTML", "CSS", "반응형 웹퍼블리싱"]
-        },
-        {
-            id: 2,
-            awards: "",
+            id: 1,
+            awards: "기능 미완성",
             title: "Aerter 향수 브랜드 웹사이트",
             label: "Personal",
             date: "2026.06.30 ~ 2026.07.02",
@@ -55,7 +29,7 @@ export const projectData = {
                 "/images/aerter/aerter05.png",
                 "/images/aerter/aerter06.png"
             ],
-            link: "https://aerter.vercel.app/",
+            link: "https://aerter-kimjuyeons-projects.vercel.app/",
             github: "https://github.com/kimjuy7678-beep/Aerter",
             tags: ["React", "TypeScript", "Tailwind CSS", "Vite"]
         }
